@@ -18,3 +18,20 @@ To configure:
 
 
 3. You will now have a `session_https` attribute on your `request` objects
+
+
+support for https awareness
+	default values are "true"
+		session_https.ensure_scheme= True
+		beaker_session_https.ensure_scheme= True
+	can be set to "false"
+	if request.scheme is not https, session_https will be "None"
+	
+	request.scheme can be supported for backend proxies via paste deploy prefix middleware
+
+	add this to your environment.ini's [app:main]
+		filter-with = proxy-prefix
+
+	then add this section
+		[filter:proxy-prefix]
+		use = egg:PasteDeploy#prefix
