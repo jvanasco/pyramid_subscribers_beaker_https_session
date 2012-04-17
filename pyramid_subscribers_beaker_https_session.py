@@ -39,14 +39,15 @@ def _initialize_settings_and_factory( config, settings ):
 
     #push the ensure_scheme onto the factory...
     https_session_factory.ensure_scheme = ensure_scheme
-    
+
     def register_session_https_factory():
         config.registry.registerUtility(https_session_factory, ISessionHttpsFactory)
 
-    intr = config.introspectable('session https factory', None,
-                               config.object_description(https_session_factory),
-                               'session https factory')
-
+    intr = config.introspectable( 'session https factory', \
+            None,
+            config.object_description(https_session_factory),
+            'session https factory'
+        )
     intr['factory'] = https_session_factory
     config.action(ISessionHttpsFactory, register_session_https_factory, introspectables=(intr,))
 
@@ -58,6 +59,8 @@ def _subscriber_add_https_session(event):
         raise AttributeError(
             'No session_https factory registered '
             )
+    if event.request.scheme != 'https':
+        return None
     event.request.session_https= factory(event.request)
 
 

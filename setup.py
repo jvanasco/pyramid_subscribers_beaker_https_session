@@ -10,17 +10,17 @@ README = open(os.path.join(here, "README.txt")).read()
 README = README.split("\n\n", 1)[0] + "\n"
 
 requires = [
-    "pyramid", 
+    "pyramid",
     "pyramid_beaker"
     ]
 
 setup(name="pyramid_subscribers_beaker_https_session",
-      version="0.0.2",
+      version="0.0.3",
       description="provides for a 'session_https' secure session object",
       long_description=README,
       classifiers=[
         "Intended Audience :: Developers",
-        "Framework :: Pylons",
+        "Framework :: Pyramid",
         "Programming Language :: Python",
         "License :: OSI Approved :: MIT License",
         ],
