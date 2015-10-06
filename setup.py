@@ -16,7 +16,7 @@ requires = [
 
 setup(
     name="pyramid_subscribers_beaker_https_session",
-    version="0.0.5",
+    version="0.0.6",
     description="provides for a 'session_https' secure session object",
     long_description=README,
     classifiers=[
@@ -26,12 +26,11 @@ setup(
         "License :: Repoze Public License",
     ],
     keywords="web pyramid beaker",
-    py_modules=['pyramid_subscribers_beaker_https_session'],
+    packages=['pyramid_subscribers_beaker_https_session'],
     author="Jonathan Vanasco",
     author_email="jonathan@findmeon.com",
     url="https://github.com/jvanasco/pyramid_subscribers_beaker_https_session",
     license="BSD-derived (http://www.repoze.org/LICENSE.txt)",
-    packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     tests_require = requires,
