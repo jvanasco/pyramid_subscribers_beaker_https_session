@@ -2,7 +2,7 @@ from pyramid_beaker import BeakerSessionFactoryConfig
 from beaker.util import coerce_session_params
 from pyramid.interfaces import ISessionFactory
 from pyramid.settings import asbool
-from zope.interface import (Attribute)
+# from zope.interface import (Attribute)
 
 
 class ISessionHttpsFactory(ISessionFactory):
@@ -18,7 +18,9 @@ class NotHttpsRequest(Exception):
 def _initialize_settings_and_factory(config, settings):
     """Parses config settings, registers ISessionHttpsFactory with Pyramid"""
     https_options = {}
-    https_prefixes = ('session_https.', 'beaker.session_https.')
+    https_prefixes = ('session_https.',
+                      'beaker.session_https.',
+                      )
     for k, v in settings.items():
         for prefix in https_prefixes:
             if k.startswith(prefix):
@@ -44,12 +46,11 @@ def _initialize_settings_and_factory(config, settings):
     def register_session_https_factory():
         config.registry.registerUtility(https_session_factory, ISessionHttpsFactory)
 
-    intr = config.introspectable(
-        'session https factory',
-        None,
-        config.object_description(https_session_factory),
-        'session https factory'
-    )
+    intr = config.introspectable('session https factory',
+                                 None,
+                                 config.object_description(https_session_factory),
+                                 'session https factory'
+                                 )
     intr['factory'] = https_session_factory
     config.action(ISessionHttpsFactory, register_session_https_factory, introspectables=(intr, ))
 

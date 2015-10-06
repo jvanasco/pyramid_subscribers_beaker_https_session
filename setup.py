@@ -16,14 +16,14 @@ requires = [
 
 setup(
     name="pyramid_subscribers_beaker_https_session",
-    version="0.0.4",
+    version="0.0.5",
     description="provides for a 'session_https' secure session object",
     long_description=README,
     classifiers=[
         "Intended Audience :: Developers",
         "Framework :: Pyramid",
         "Programming Language :: Python",
-        "License :: OSI Approved :: MIT License",
+        "License :: Repoze Public License",
     ],
     keywords="web pyramid beaker",
     py_modules=['pyramid_subscribers_beaker_https_session'],
