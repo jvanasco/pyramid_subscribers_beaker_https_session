@@ -5,9 +5,12 @@ import os
 from setuptools import setup
 from setuptools import find_packages
 
-here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, "README.md")).read()
-README = README.split("\n\n", 1)[0] + "\n"
+try:
+    here = os.path.abspath(os.path.dirname(__file__))
+    README = open(os.path.join(here, "README.md")).read()
+    README = README.split("\n\n", 1)[0] + "\n"
+except:
+    README = ''
 
 requires = [
     "pyramid",
@@ -16,7 +19,7 @@ requires = [
 
 setup(
     name="pyramid_subscribers_beaker_https_session",
-    version="0.0.6",
+    version="0.0.7",
     description="provides for a 'session_https' secure session object",
     long_description=README,
     classifiers=[
