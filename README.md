@@ -11,15 +11,13 @@ To configure:
 
 2. In your app/__init__.py main:
 
-	from pyramid_subscribers_beaker_https_session import initialize_https_session_set_request_property
-	initialize_https_session_set_request_property(config, settings)
+	import pyramid_subscribers_beaker_https_session
 
 	## initialize https session
-    initialize_https_session_set_request_property(config, settings)
+    pyramid_subscribers_beaker_https_session.initialize_https_session_support(config, settings)
 
 
 3. You will now have a `session_https` attribute on your `request` objects
-
 
 support for https awareness
 ===========================
@@ -41,6 +39,14 @@ Then add this section
 
 	[filter:proxy-prefix]
 	use = egg:PasteDeploy#prefix
+
+
+requirements
+============
+
+this package (obviously) requires pyramid and beaker
+
+As of v 0.1.0, this package requires `pyramid_https_session_core`
 
 
 license

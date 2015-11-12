@@ -14,12 +14,13 @@ except:
 
 requires = [
     "pyramid",
-    "pyramid_beaker"
+    "pyramid_beaker",
+    "pyramid_https_session_core",
 ]
 
 setup(
     name="pyramid_subscribers_beaker_https_session",
-    version="0.0.7",
+    version="0.1.0",
     description="provides for a 'session_https' secure session object",
     long_description=README,
     classifiers=[

@@ -1,3 +1,8 @@
+0.1.0
+	large rewrite
+	removed 'subscribers'
+	split all non-beaker logic into `pyramid_https_session_core` for reuse
+
 0.0.7
 	fixed packaging issue
 
