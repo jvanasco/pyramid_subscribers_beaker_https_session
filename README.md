@@ -44,12 +44,20 @@ Then add this section
 requirements
 ============
 
-this package (obviously) requires pyramid and beaker
+this package (obviously) requires `pyramid`, `beaker`, and `pyramid_beaker`
 
 As of v 0.1.0, this package requires `pyramid_https_session_core` https://github.com/jvanasco/pyramid_https_session_core
 
 
-license
+PyPi
+==========
+
+This package is available on PyPi
+
+* https://pypi.python.org/pypi/pyramid_subscribers_beaker_https_session
+
+
+License
 =======
 
 Large sections of this code were based on pyramid_beaker, which is released under
