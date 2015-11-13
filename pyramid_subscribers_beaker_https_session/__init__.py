@@ -1,12 +1,20 @@
+from pyramid.settings import asbool
+
 from pyramid_beaker import BeakerSessionFactoryConfig
 from beaker.util import coerce_session_params
-
-from pyramid.settings import asbool
 
 import pyramid_https_session_core
 
 
 # ==============================================================================
+
+
+class RedisConfigurator(pyramid_https_session_core.SessionBackendConfigurator):
+
+    # used to ensure compatibility
+    compatibility_options = {'secure': 'secure',
+                             'httponly': 'cookie_httponly',
+                             }
 
 
 def initialize_https_session_support(config, settings):
@@ -25,19 +33,14 @@ def initialize_https_session_support(config, settings):
                     v = asbool(v)
                 https_options[option_name] = v
 
-    # note if we're going to ensure the https scheme... default to True
-    ensure_scheme = True
-    if 'ensure_scheme' in https_options:
-        ensure_scheme = asbool(https_options['ensure_scheme'])
-    config.registry.settings['pyramid_https_session_core.ensure_scheme'] = ensure_scheme
+    # ensure compatibility with our options
+    RedisConfigurator.ensure_compatibility(https_options)
+    RedisConfigurator.ensure_security(config, https_options)
+    RedisConfigurator.cleanup_options(https_options)
 
-    # force secure...
-    https_options['secure'] = True
+    # build a session
     https_options = coerce_session_params(https_options)
     https_session_factory = config.maybe_dotted(BeakerSessionFactoryConfig(**https_options))
-
-    # push the ensure_scheme onto the factory...
-    https_session_factory.ensure_scheme = ensure_scheme
 
     # okay!  register our factory
     pyramid_https_session_core.register_https_session_factory(config,

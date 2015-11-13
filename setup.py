@@ -20,7 +20,7 @@ requires = [
 
 setup(
     name="pyramid_subscribers_beaker_https_session",
-    version="0.1.0",
+    version="0.1.1",
     description="provides for a 'session_https' secure session object",
     long_description=README,
     classifiers=[
