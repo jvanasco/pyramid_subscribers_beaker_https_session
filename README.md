@@ -46,7 +46,7 @@ requirements
 
 this package (obviously) requires pyramid and beaker
 
-As of v 0.1.0, this package requires `pyramid_https_session_core`
+As of v 0.1.0, this package requires `pyramid_https_session_core` https://github.com/jvanasco/pyramid_https_session_core
 
 
 license
