@@ -15,6 +15,9 @@ class RedisConfigurator(pyramid_https_session_core.SessionBackendConfigurator):
     compatibility_options = {'secure': 'secure',
                              'httponly': 'cookie_httponly',
                              }
+    # ensure the backend gets `type`
+    allowed_passthrough_options = ('type',
+                                   )
 
 
 def initialize_https_session_support(config, settings):
@@ -41,7 +44,7 @@ def initialize_https_session_support(config, settings):
     # build a session
     https_options = coerce_session_params(https_options)
     https_session_factory = config.maybe_dotted(BeakerSessionFactoryConfig(**https_options))
-
+    
     # okay!  register our factory
     pyramid_https_session_core.register_https_session_factory(config,
                                                               settings,

@@ -1,3 +1,7 @@
+0.1.2
+	more standardization
+	packaging fixes
+
 0.1.1
 	standardizing a bit for easier compat with other libraries
 	adding an inheritance based configuration tool
