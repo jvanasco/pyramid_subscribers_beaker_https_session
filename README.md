@@ -1,20 +1,27 @@
-`pyramid_subscribers_beaker_https_session` allows you to add a https-only session based cookie to your application.
+This Package is EOL and unsupported.
+====================================
+
+
+`pyramid_subscribers_beaker_https_session` allows you to add a https-only
+session based cookie to your application.
 
 To configure:
 =============
 
-1. As of the initial release it mimics the code in pyramid_beaker, with two changes:
+1. As of the initial release it mimics the code in `pyramid_beaker`,
+   with two changes:
 
 * The prefix must either be `session_https` or `beaker_session_https`
 * This package forces `secure` to be `True`
-
 
 2. In your app/__init__.py main:
 
 	import pyramid_subscribers_beaker_https_session
 
 	## initialize https session
-    pyramid_subscribers_beaker_https_session.initialize_https_session_support(config, settings)
+    pyramid_subscribers_beaker_https_session.initialize_https_session_support(
+    	config, settings
+    )
 
 
 3. You will now have a `session_https` attribute on your `request` objects
@@ -29,7 +36,8 @@ default values are `true`.  They can be set to `false`
 
 If `request.scheme` is not "https", then `session_https` will be `None`.
 
-`request.scheme` can be supported for backend proxies via paste deploy's prefix middleware:
+`request.scheme` can be supported for backend proxies via paste deploy's
+prefix middleware:
 
 Add this to your environment.ini's [app:main]
 

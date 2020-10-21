@@ -8,7 +8,6 @@ from pyramid import testing
 
 
 class TestPyramid(unittest.TestCase):
-
     def setUp(self):
         self.config = testing.setUp()
         self.context = testing.DummyResource()
